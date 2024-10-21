@@ -1,4 +1,19 @@
-# ROS Development Setup
+# ROS Development Setup (official)
+See https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html.
+
+Python 3.12 now wants a virtual environment before installing anything with pip.
+```zsh
+cd $HOME
+python3 -m venv python3_env
+source $HOME/python3_env/bin/activate # to .zshrc
+```
+
+But for system tools this does not work. We need to force:
+```zsh
+pip install --break-system-package <your-package>
+```
+
+# ROS Development Setup (via Mamba)
 
 This repository contains instructions to setup an environment for ROS2 for Linux and MacOS. It is my personal setup for researching and developing on my machines, not a general guide for all use cases. On Robots ("production"), I would recommend running a native minimal installation without any third-party tooling around it.
 
