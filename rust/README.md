@@ -6,19 +6,12 @@ Install Rust if you haven't already. You can check if you have it installed by r
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Install tooling for easier binary installation.
-```zsh
-cargo install cargo-binstall
-```
-
 Make sure you have `libclang-dev` installed for building bindings (bindgen). For Ubuntu just run `sudo apt install libclang-dev`, for MacOS you can install it with `brew install llvm`.
 
 ## ROS2 specific
 
 ```zsh
-cargo binstall cargo-ament-build
-pip install colcon-cargo
-pip install git+https://github.com/stelzo/colcon-ros-cargo.git@conda
+pip install --break-system-package colcon-ros-cargo cargo-ament-build
 ```
 
 Now you can build your Rust packages like every other ROS2 package.
