@@ -21,15 +21,20 @@ This repository contains instructions to setup an environment for ROS2 for Linux
 
 Install `conda`: https://docs.anaconda.com/miniconda/
 
+On MacOS, use brew:
+```zsh
+brew install --cask miniconda
+```
+
 Install `mamba`
 ```zsh
 conda install mamba -c conda-forge
-mamba init zsh
+mamba shell init --shell zsh
 ```
 
 ## Install ROS2 (Humble)
 ```bash
-mamba create -n humble_env python=3.12
+mamba create -n humble_env
 mamba activate humble_env
 conda config --env --add channels conda-forge
 conda config --env --add channels robostack-staging
