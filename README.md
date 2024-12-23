@@ -13,6 +13,47 @@ But for system tools this does not work. We need to force:
 pip install --break-system-package <your-package>
 ```
 
+# ROS Development Setup (via Distrobox)
+
+The dev setup assumes zsh. If you use bash, don't just blindly copy paste the commands.
+
+Install distrobox and podman.
+
+Mac
+```zsh
+brew install distrobox podman
+```
+
+Ubuntu >=22.10
+```zsh
+sudo apt install distrobox podman
+```
+
+Init podman
+```zsh
+podman machine init
+podman machine start
+```
+
+Get the ROS Jazzy container.
+```zsh
+curl -L 'https://myshare.uni-osnabrueck.de/f/34c041440220441ba164/?dl=1' -o ros2-jazzy.tar.bz
+podman load < ros2-jazzy.tar.bz2
+```
+
+Create the environment container
+```zsh
+distrobox create --image ros2-jazzy:latest --name jazzy --additional-flags "--entrypoint /bin/zsh"
+```
+
+Now enter the container.
+```zsh
+distrobox enter jazzy -- zsh -c "source /opt/ros/jazzy/setup.zsh && exec zsh"
+```
+
+> [!NOTE]
+> The upper command is already shortened in my dev environment and can be called with just typing `jazzy` anywhere.
+
 # ROS Development Setup (via Mamba)
 
 This repository contains instructions to setup an environment for ROS2 for Linux and MacOS. It is my personal setup for researching and developing on my machines, not a general guide for all use cases. On Robots ("production"), I would recommend running a native minimal installation without any third-party tooling around it.
@@ -87,3 +128,14 @@ Messages use their own repository. This way they can be shared easily with other
 A package is a repository. This makes a workspace just a collection of repositories. Use `vcstool` to manage them.
 
 # TODO show vcstool
+TODO
+
+## Managing the setup
+
+Export a new image
+```zsh
+podman container commit -p distrobox_name image_name_you_choose
+podman save image_name_you_choose:latest | bzip2 > image_name_you_choose.tar.bz
+```
+
+
