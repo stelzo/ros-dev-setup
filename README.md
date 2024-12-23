@@ -54,58 +54,7 @@ distrobox enter jazzy -- zsh -c "source /opt/ros/jazzy/setup.zsh && exec zsh"
 > [!NOTE]
 > The upper command is already shortened in my dev environment and can be called with just typing `jazzy` anywhere.
 
-# ROS Development Setup (via Mamba)
-
-This repository contains instructions to setup an environment for ROS2 for Linux and MacOS. It is my personal setup for researching and developing on my machines, not a general guide for all use cases. On Robots ("production"), I would recommend running a native minimal installation without any third-party tooling around it.
-
-## Prerequisites
-
-Install `conda`: https://docs.anaconda.com/miniconda/
-
-On MacOS, use brew:
-```zsh
-brew install --cask miniconda
-```
-
-Install `mamba`
-```zsh
-conda install mamba -c conda-forge
-mamba shell init --shell zsh
-```
-
-## Install ROS2 (Humble)
-```bash
-mamba create -n humble_env
-mamba activate humble_env
-conda config --env --add channels conda-forge
-conda config --env --add channels robostack-staging
-
-# this might return an error if it is not in the list which is ok
-conda config --env --remove channels defaults
-
-mamba install ros-humble-desktop
-mamba install compilers cmake pkg-config make ninja colcon-common-extensions catkin_tools rosdep
-
-mamba deactivate # reactivate to initialize the shell properly
-
-# useful commands
-mamba activate humble_env
-mamba update --all
-mamba remove humble_env # undo everything
-```
-
 For Rust, follow the instructions in [this](./rust/README.md) section.
-
-Build
-```zsh
-colcon build --cmake-args -DPython3_EXECUTABLE=$(which python) -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -DPython3_NumPy_INCLUDE_DIRS=$(python -c "import numpy; print(numpy.get_include())")
-```
-
-when you want to `cargo build`
-```zsh
-source install/local_setup.sh
-export DYLD_LIBRARY_PATH=$CONDA_PREFIX/lib:$DYLD_LIBRARY_PATH
-```
 
 ## (My) Best practices
 
