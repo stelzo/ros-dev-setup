@@ -13,18 +13,11 @@ But for system tools this does not work. We need to force:
 pip install --break-system-package <your-package>
 ```
 
-# ROS Development Setup (via Distrobox)
+# ROS Development Setup (via Distrobox) [Linux only]
 
 The dev setup assumes zsh. If you use bash, don't just blindly copy paste the commands.
 
-Install distrobox and podman.
-
-Mac
-```zsh
-brew install distrobox podman
-```
-
-Ubuntu >=22.10
+Install distrobox and podman. Ubuntu >=22.10
 ```zsh
 sudo apt install distrobox podman
 ```
