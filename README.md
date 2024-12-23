@@ -38,7 +38,7 @@ podman machine start
 Get the ROS Jazzy container.
 ```zsh
 curl -L 'https://myshare.uni-osnabrueck.de/f/34c041440220441ba164/?dl=1' -o ros2-jazzy.tar.bz
-podman load < ros2-jazzy.tar.bz2
+podman load < ros2-jazzy.tar.bz
 ```
 
 Create the environment container
