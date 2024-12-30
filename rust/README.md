@@ -17,14 +17,8 @@ pip install colcon-ros-cargo
 > [!NOTE]
 > Use `--break-system-package` if you are not using a virtual environment.
 
-If binstall plugin is installed
 ```zsh
 cargo binstall cargo-ament-build
-```
-
-else (needs more time)
-```zsh
-cargo install cargo-ament-build
 ```
 
 Now you can build your Rust packages like every other ROS2 package.
