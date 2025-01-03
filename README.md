@@ -27,6 +27,8 @@ podman machine init
 podman machine start
 ```
 
+If you get an error that gvproxy is not installed, do it with `curl -L 'https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.1/gvproxy-linux-amd64' -o gvproxy`, `chmod +x gvproxy`, `sudo mv gvproxy /usr/libexec/podman/gvproxy`.
+
 Get my ROS Jazzy container.
 ```zsh
 curl -L 'https://myshare.uni-osnabrueck.de/f/34c041440220441ba164/?dl=1' -o ros2-jazzy.tar.bz
