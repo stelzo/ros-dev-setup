@@ -73,4 +73,11 @@ podman container commit -p jazzy <your-image-name>
 podman save <your-image-name>:latest | bzip2 > <your-image-name>.tar.bz
 ```
 
+### ROS1 -> ROS2
+
+For comparing old vs new methods, the datasets should be the same. Bagfiles can be converted with
+```bash
+pip3 install rosbags --break-system-packages
+rosbags-convert --src <bagfile>.bag --dst <outputfolder>
+```
 
