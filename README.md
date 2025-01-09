@@ -29,18 +29,20 @@ podman machine start
 
 If you get an error that gvproxy is not installed, do it with `curl -L 'https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.1/gvproxy-linux-amd64' -o gvproxy`, `chmod +x gvproxy`, `sudo mv gvproxy /usr/libexec/podman/gvproxy`.
 
-Get my ROS Jazzy container.
+Create the environment container. Add `--nvidia` if you have a nvidia graphics card.
 ```zsh
-curl -L 'https://myshare.uni-osnabrueck.de/f/34c041440220441ba164/?dl=1' -o ros2-jazzy.tar.bz
-podman load < ros2-jazzy.tar.bz
+distrobox create --image ubuntu:24.04 --name jazzy
 ```
 
-Create the environment container
+Enter and run the install script for the environment.
 ```zsh
-distrobox create --image ros2-jazzy:latest --name jazzy --additional-flags "--entrypoint /bin/zsh"
+distrobox enter jazzy
+./bin/init_jazzy_image.sh
 ```
 
-Now enter the container.
+TODO: add init_jazzy_image.sh, get from dev repo.
+
+In the future you should enter the container like this. You may use an alias for that.
 ```zsh
 distrobox enter jazzy -- zsh -c "source /opt/ros/jazzy/setup.zsh && exec zsh"
 ```
@@ -48,7 +50,7 @@ distrobox enter jazzy -- zsh -c "source /opt/ros/jazzy/setup.zsh && exec zsh"
 > [!NOTE]
 > The upper command is already shortened in my dev environment and can be called by just typing `jazzy` anywhere.
 
-For Rust, follow the instructions in [this](./rust/README.md) section.
+For Rust, follow the instructions in [this](./rust/README.md) section. The script already installs the toolchains.
 
 ## My Best practices
 
