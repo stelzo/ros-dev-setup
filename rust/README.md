@@ -16,7 +16,7 @@ pip install colcon-ros-cargo
 ```
 
 > [!NOTE]
-> Use `--break-system-package` if you are not using a virtual environment.
+> Use `--break-system-packages` if you are not using a virtual environment.
 
 ```zsh
 cargo binstall cargo-ament-build
