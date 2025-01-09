@@ -1,6 +1,6 @@
 # ROS Development Setup
 
-This is a description how to setup my ROS environment. I make assumptions like ROS2 version and shell etc. based on my needs. Don't just blindly copy paste the commands if you don't have the same environment.
+This is a description how to setup my ROS environment. I make some assumptions like shell etc. based on my needs. Don't just blindly copy paste the commands if you don't have the same environment.
 
 Python 3.12 now wants a virtual environment before installing anything with pip. I recommend using venv.
 ```zsh
@@ -15,6 +15,10 @@ pip install --break-system-package <your-package>
 ```
 
 # Setup via Distrobox [Linux only]
+
+These versions are available. Change the commands depending on your needed ROS version.
+- ROS2 Jazzy
+- ROS1 Melodic
 
 Install distrobox and podman. Example with Ubuntu >=22.10. 
 ```zsh
@@ -34,13 +38,11 @@ Create the environment container. Add `--nvidia` if you have a nvidia graphics c
 distrobox create --image ubuntu:24.04 --name jazzy
 ```
 
-Enter and run the install script for the environment.
+Enter and run the install script for the environment. If you [my dev setup](https://github.com/stelzo/dev) is used, you can just type `init_jazzy_image.sh` anywhere.
 ```zsh
 distrobox enter jazzy
-./bin/init_jazzy_image.sh
+curl -s https://raw.githubusercontent.com/stelzo/dev/refs/heads/main/bin/init_jazzy_image.sh | bash
 ```
-
-TODO: add init_jazzy_image.sh, get from dev repo.
 
 In the future you should enter the container like this. You may use an alias for that.
 ```zsh
