@@ -38,7 +38,7 @@ Create the environment container. Add `--nvidia` if you have a nvidia graphics c
 distrobox create --image ubuntu:24.04 --name jazzy
 ```
 
-Enter and run the install script for the environment. If you [my dev setup](https://github.com/stelzo/dev) is used, you can just type `init_jazzy_image.sh` anywhere.
+Enter and run the install script for the environment. If [my dev setup](https://github.com/stelzo/dev) is used, you can just type `init_jazzy_image.sh` anywhere.
 ```zsh
 distrobox enter jazzy
 curl -s https://raw.githubusercontent.com/stelzo/dev/refs/heads/main/bin/init_jazzy_image.sh | bash
