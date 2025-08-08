@@ -82,6 +82,6 @@ podman save <your-image-name>:latest | bzip2 > <your-image-name>.tar.bz
 For comparing old vs new methods, the datasets should be the same. Bagfiles can be converted with
 ```bash
 pip3 install rosbags --break-system-packages
-rosbags-convert --src <bagfile>.bag --dst <outputfolder>
+rosbags-convert --dst-storage mcap --src <bagfile>.bag --dst <outputfolder>
 ```
 
