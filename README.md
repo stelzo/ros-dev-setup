@@ -22,7 +22,7 @@ These versions are available. Change the commands depending on your needed ROS v
 
 Install distrobox and podman. Example with Ubuntu >=22.10. 
 ```zsh
-sudo apt install distrobox podman
+sudo apt install distrobox podman qemu-system
 ```
 
 Init podman
@@ -31,9 +31,14 @@ podman machine init
 podman machine start
 ```
 
-If you get an error that gvproxy is not installed, do it with `curl -L 'https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.1/gvproxy-linux-amd64' -o gvproxy`, `chmod +x gvproxy`, `sudo mv gvproxy /usr/libexec/podman/gvproxy`.
+If you get an error that gvproxy is not installed, do it with
+```zsh
+curl -L 'https://github.com/containers/gvisor-tap-vsock/releases/download/v0.8.1/gvproxy-linux-amd64' -o gvproxy
+chmod +x gvproxy
+sudo mv gvproxy /usr/libexec/podman/gvproxy
+```
 
-Create the environment container. Add `--nvidia` if you have a nvidia graphics card.
+Create the environment container. Add `--nvidia` if you have an nvidia graphics card.
 ```zsh
 distrobox create --image ubuntu:24.04 --name jazzy
 ```
@@ -43,6 +48,8 @@ Enter and run the install script for the environment. If [my dev setup](https://
 distrobox enter jazzy
 curl -s https://raw.githubusercontent.com/stelzo/dev/refs/heads/main/bin/init_jazzy_image.sh | bash
 ```
+
+Exit the container with `exit`.
 
 In the future you should enter the container like this. You may use an alias for that.
 ```zsh
