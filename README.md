@@ -81,10 +81,10 @@ Exit the container with `exit`.
 In the future you should enter the container like this. You may use an alias for that.
 ```zsh
 # ROS 2 Jazzy
-distrobox enter jazzy -- zsh -c "source /opt/ros/jazzy/setup.zsh && exec zsh"
+distrobox enter jazzy -- bash -c "source /opt/ros/jazzy/setup.bash && exec bash"
 
 # ROS 2 Lyrical
-distrobox enter lyrical -- zsh -c "source /opt/ros/lyrical/setup.zsh && exec zsh"
+distrobox enter lyrical -- bash -c "source /opt/ros/lyrical/setup.bash && exec bash"
 ```
 
 > [!NOTE]
